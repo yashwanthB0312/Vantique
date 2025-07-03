@@ -17,7 +17,7 @@ const Login = ({ setIsLoggedIn }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/users/login', form);
+      const res = await axios.post('https://vantique.onrender.com/api/users/login', form);
       localStorage.setItem('userId', res.data._id);
       setIsLoggedIn(true);
       navigate('/home');

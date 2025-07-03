@@ -39,7 +39,7 @@ const ManageProducts = () => {
   ];
 
   const fetchProducts = async () => {
-    const res = await axios.get('http://localhost:5000/api/products');
+    const res = await axios.get('https://vantique.onrender.com/api/products');
     setProducts(res.data);
   };
 
@@ -83,9 +83,9 @@ const ManageProducts = () => {
       };
 
       if (editMode) {
-        await axios.put(`http://localhost:5000/api/products/${editingId}`, productData);
+        await axios.put(`https://vantique.onrender.com/api/products/${editingId}`, productData);
       } else {
-        const res = await axios.post("http://localhost:5000/api/products", {
+        const res = await axios.post("https://vantique.onrender.com/api/products", {
           ...productData,
           image: imageUrl,
         });
@@ -107,7 +107,7 @@ const ManageProducts = () => {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure to delete this product?")) return;
-    await axios.delete(`http://localhost:5000/api/products/${id}`);
+    await axios.delete(`https://vantique.onrender.com/api/products/${id}`);
     fetchProducts();
   };
 

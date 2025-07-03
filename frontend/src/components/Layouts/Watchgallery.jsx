@@ -51,7 +51,7 @@ const Watchgallery = ({ initialFilter = {} }) => {
   //     .catch(err => console.error('Failed to load products:', err));
   // }, []);
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products')
+    axios.get('https://vantique.onrender.com/api/products')
       .then(res => {
         let filtered = res.data;
 

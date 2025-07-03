@@ -7,7 +7,7 @@ const Account = () => {
   const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/users/${userId}`)
+    axios.get(`https://vantique.onrender.com/api/users/${userId}`)
       .then(res => setUser(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -17,7 +17,7 @@ const Account = () => {
   };
 
   const handleUpdate = () => {
-    axios.put(`http://localhost:5000/api/users/${userId}`, user)
+    axios.put(`https://vantique.onrender.com/api/users/${userId}`, user)
       .then(() => setEditMode(false))
       .catch(err => console.error('Failed to update:', err));
   };

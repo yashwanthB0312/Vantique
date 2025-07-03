@@ -6,7 +6,7 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/orders/user/${userId}`)
+    axios.get(`https://vantique.onrender.com/api/orders/user/${userId}`)
       .then(res => setOrders(res.data))
       .catch(err => console.error(err));
   }, []);

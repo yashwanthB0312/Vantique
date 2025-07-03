@@ -20,9 +20,9 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const [productsRes, ordersRes, usersRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/products'),
-          axios.get('http://localhost:5000/api/orders'),
-          axios.get('http://localhost:5000/api/users'),
+          axios.get('https://vantique.onrender.com/api/products'),
+          axios.get('https://vantique.onrender.com/api/orders'),
+          axios.get('https://vantique.onrender.com/api/users'),
         ]);
 
         const totalWatches = productsRes.data.length;

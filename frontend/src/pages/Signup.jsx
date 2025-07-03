@@ -21,7 +21,7 @@ const Signup = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-    const response = await axios.post('http://localhost:5000/api/users/signup', form);
+    const response = await axios.post('https://vantique.onrender.com/api/users/signup', form);
     console.log("User created:", response.data);
     navigate('/')
   } catch (err) {

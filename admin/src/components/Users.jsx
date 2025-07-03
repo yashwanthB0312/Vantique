@@ -6,7 +6,7 @@ const Users = () => {
 
   const fetchUsers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/users');
+      const res = await axios.get('https://vantique.onrender.com/api/users');
       setUsers(res.data);
     } catch (err) {
       console.error('Failed to fetch users:', err);
@@ -17,7 +17,7 @@ const Users = () => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/users/${id}`);
+      await axios.delete(`https://vantique.onrender.com/api/users/${id}`);
       setUsers(prev => prev.filter(user => user._id !== id));
     } catch (err) {
       console.error('Failed to delete user:', err);

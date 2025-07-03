@@ -1,49 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-
-// const userId = localStorage.getItem('userId');
-
-// const CartPage = () => {
-//   const [cart, setCart] = useState(null);
-
-//   useEffect(() => {
-//     axios.get(`http://localhost:5000/api/cart/${userId}`)
-//       .then(res => setCart(res.data))
-//       .catch(err => console.error('Failed to fetch cart:', err));
-//   }, []);
-
-//   const total = cart?.items?.reduce((acc, item) => acc + (item.quantity * item.productId.price), 0) || 0;
-
-//   return (
-//     <div className="max-w-4xl mx-auto p-6">
-//       <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
-//       {cart?.items?.length > 0 ? (
-//         <>
-//           <div className="space-y-4">
-//             {cart.items.map((item, index) => (
-//               <div key={index} className="flex gap-4 border p-4 rounded-lg shadow bg-white">
-//                 <img src={item.productId.image} alt="Product" className="w-24 h-24 object-cover rounded" />
-//                 <div className="flex-1">
-//                   <h3 className="text-lg font-semibold">{item.productId.brand}</h3>
-//                   <p className="text-sm text-gray-600">{item.productId.type} | {item.productId.gender}</p>
-//                   <p className="text-sm text-gray-700">₹{item.productId.price} × {item.quantity}</p>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//           <div className="mt-6 text-xl font-semibold">
-//             Total: ₹{total}
-//           </div>
-//         </>
-//       ) : (
-//         <p>Your cart is empty.</p>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default CartPage;
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -58,7 +12,7 @@ const CartPage = () => {
 
   const fetchCart = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/cart/${userId}`);
+      const res = await axios.get(`https://vantique.onrender.com/api/cart/${userId}`);
       setCart(res.data);
     } catch (err) {
       console.error('Failed to fetch cart:', err);
@@ -72,7 +26,7 @@ const CartPage = () => {
       return;
     }
     try {
-      await axios.put(`http://localhost:5000/api/cart/${userId}`, {
+      await axios.put(`https://vantique.onrender.com/api/cart/${userId}`, {
         productId,
         quantity: newQty,
       });
@@ -84,7 +38,7 @@ const CartPage = () => {
 
   const deleteItem = async (productId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/cart/${userId}/${productId}`);
+      await axios.delete(`https://vantique.onrender.com/api/cart/${userId}/${productId}`);
       fetchCart();
     } catch (err) {
       console.error('Failed to delete item:', err);
@@ -93,7 +47,7 @@ const CartPage = () => {
 
   const checkout = async () => {
     try {
-      const res = await axios.post(`http://localhost:5000/api/cart/checkout/${userId}`);
+      const res = await axios.post(`https://vantique.onrender.com/api/cart/checkout/${userId}`);
       alert('Order placed successfully!');
       fetchCart();
     } catch (err) {

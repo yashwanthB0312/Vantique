@@ -1,36 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-
-// const Wishlist = () => {
-//   const [items, setItems] = useState([]);
-//   const userId = localStorage.getItem('userId');
-
-//   useEffect(() => {
-//     axios.get(`http://localhost:5000/api/wishlist/${userId}`)
-//       .then(res => setItems(res.data.items))
-//       .catch(err => console.error('Failed to fetch wishlist:', err));
-//   }, []);
-
-//   return (
-//     <div className="p-16">
-//       <h1 className="text-2xl font-bold mb-4">My Wishlist</h1>
-//       {items.length ? (
-//         <div className="grid grid-cols-4 gap-6">
-//           {items.map((item, idx) => (
-//             <div key={idx} className="bg-white shadow p-4 rounded">
-//               <img src={item.image} alt={item.brand} className="w-full h-40 object-cover rounded" />
-//               <h3 className="text-lg font-bold mt-2">{item.brand}</h3>
-//               <p className="text-sm text-gray-600">₹{item.price}</p>
-//             </div>
-//           ))}
-//         </div>
-//       ) : <p>No items in wishlist.</p>}
-//     </div>
-//   );
-// };
-
-// export default Wishlist;
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -41,14 +8,14 @@ const Wishlist = () => {
   useEffect(() => {
     if (!userId) return;
 
-    axios.get(`http://localhost:5000/api/wishlist/${userId}`)
+    axios.get(`https://vantique.onrender.com/api/wishlist/${userId}`)
       .then(res => setItems(res.data.items))
       .catch(err => console.error('Failed to fetch wishlist:', err));
   }, [userId]);
 
   const handleRemove = async (productId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/wishlist/${userId}/${productId}`);
+      await axios.delete(`https://vantique.onrender.com/api/wishlist/${userId}/${productId}`);
       setItems(prev => prev.filter(item => item.productId._id !== productId));
     } catch (err) {
       console.error('Failed to remove from wishlist:', err);
